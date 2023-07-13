@@ -1,2 +1,2 @@
 # C-CourseWork
- I created a file processing machine using KMP Algorithm and C language as my CourseWork assignment. ( didn't completed yet.)
+ I created a file processing machine using KMP Algorithm and C language as my CourseWork assignment. ( didn't complete it yet.)

@@ -7,9 +7,9 @@
     Ex:- Enter a search string: Advanced Landscape
 
          Search Result ::
-         * APL8005 Advanced Landscape Design 1
+         * APL8005 Advanced Landscape Design 1 
          * APL8006 Advanced Landscape Design Studio 2
         
-         Number of matches: 2 
+         Number of matches: 2  //no of occurrences 
 
- If you enter the string Advanced Landscape, it will reply you with where that phrase is located and how many occurrences it includes. 
+ If you enter the string "Advanced Landscape", it will reply to you with where that phrase is located and how many occurrences it includes. 

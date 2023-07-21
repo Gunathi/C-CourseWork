@@ -5,6 +5,7 @@
 int *preProcess(char* , int);
 int textLength(char*);
 char *setCase(char *txt);
+int searchKMP(char* , char*);
 
 //Global Variables
 char T[170], P[20];
@@ -21,42 +22,15 @@ int textLength(char* array){
     
 }
 
-char *setCase(char txt[]){
+//Convert uppercase letters to lowercase letters
+char *upperToLower(char txt[]){
     
-    for(int i = 0; i < strlen(txt) i++){
+    for(int i = 0; i < strlen(txt); i++){
         if(txt[i] >= 65 && txt[i] <= 90){
             txt[i] = txt[i] + 32;
         }
     }
-    return txt;
-    
-}
-
-int searchKMP(char *T, char *P){
-
-    int m = strlen(P), n = strlen(T), i = 0, j = 0;
-    int* PSuffix = preProcess(P, strlen(p));
-
-    found = 0; 
-
-    while(i < n){
-        if(P[j] == T[i]){
-            j++;
-            i++;
-        }
-
-        if(j == m){
-            found = 1;
-            j = PSuffix[j - 1];
-        }else if(j < n && P[j] != [i]){
-            if(j != 0){
-                j = PSuffix[j - 1];
-            }else {
-                i++;
-            }
-        }
-    }
-    return found;
+    return txt; //return updated txt
     
 }
 
@@ -80,9 +54,41 @@ int *preProcess(char *pat, int lenOfPat){
             }
         }
     }
-    return Pi-array;
+    return Pi_array;
     
 }
+
+
+int searchKMP(char *T, char *p){
+
+    int m = strlen(p), n = strlen(T), i = 0, j = 0;
+    int* PSuffix;
+    
+    PSuffix = preProcess(P, strlen(p));
+
+    found = 0; 
+
+    while(i < n){
+        if(P[j] == T[i]){
+            j++;
+            i++;
+        }
+
+        if(j == m){
+            found = 1;
+            j = PSuffix[j - 1];
+        }else if(j < n && P[j] != T[i]){
+            if(j != 0){
+                j = PSuffix[j - 1];
+            }else {
+                i++;
+            }
+        }
+    }
+    return found;
+    
+}
+
 
 int main(){
 
@@ -93,7 +99,7 @@ int main(){
     printf("Enter a search string: ");
     scanf("%[^\n]",pattern);
 
-    fp = fopen("./modules.txt","r"); //Import text file
+    fp = fopen("modules.txt","r"); //Import text file
 
     if(fp == NULL){
         printf("\n Error!!! Can't open the file.\n");
@@ -112,8 +118,8 @@ int main(){
         strcpy(T, text); //Copy the string in text variable to variable T
         strcpy(P, pattern); //Copy the string in pattern variable to variable P
 
-        setCase(T);
-        setCase(P);
+        upperToLower(T);
+        upperToLower(P);
 
         searchKMP(T, P);
 
